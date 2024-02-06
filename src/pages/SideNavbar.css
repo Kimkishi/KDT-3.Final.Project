@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+/* 루트 변수 */
+:root {
+  --nav--width: 92px;        /* 네비게이션 바의 너비 */
+  --first-color: #545454;    /* 요소의 첫 번째 색상 */
+  --bg-color: #12192c;       /* 배경 색상 */
+  --sub-color: #b6cefc;      /* 부드러운 색상 */
+  --white-color: #fff;       /* 흰색 */
+  --body-font: 'Poppins', sans-serif; /* 본문의 폰트 패밀리 */
+  --normal-font-size: 1rem;  /* 기본 폰트 크기 */
+  --small-font-size: .875rem; /* 작은 폰트 크기 */
+  --z-fixed: 100;            /* 고정된 z-인덱스 값 */
+}
+
+/* 전역 스타일 */
+*, ::before, ::after {
+  box-sizing: border-box;     /* 상자 모델 */
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 2rem 0 0 6.75rem;  /* 본문에 여백을 추가하여 고정된 네비게이션 바에 공간을 확보 */
+  font-family: var(--body-font); /* 본문에 폰트 패밀리 설정 */
+  font-size: var(--normal-font-size); /* 기본 폰트 크기 설정 */
+  transition: .5s;            /* 부드러운 전환을 위한 트랜지션 설정 */
+}
+
+h1 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;      /* 링크의 밑줄 제거 */
+}
+
+/* 네비게이션 바 스타일 */
+.l-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--nav--width);   /* 네비게이션 바의 너비 설정 */
+  height: 100vh;             /* 뷰포트의 전체 높이 */
+  background-color: #272727;  /* 네비게이션 바의 배경색 */
+  color: var(--white-color);  /* 텍스트 색상 */
+  padding: 1.5rem 1.5rem 2rem; /* 네비게이션 바의 패딩 */
+  transition: .5s;            /* 부드러운 전환을 위한 트랜지션 설정 */
+  z-index: var(--z-fixed);    /* z-인덱스 설정 */
+  overflow: hidden;           /* 닫혀 있을 때 오버플로우 숨김 */
+}
+
+/* .expander 클래스가 추가될 때 내용을 보여주도록 설정 */
+.l-navbar.expander {
+  overflow: visible;
+}
+
+/* 네비게이션 컨테이너 스타일 */
+.nav {
+  height: 100%;
+  display: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* 네비게이션 브랜드 스타일 */
+.nav__brand {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* 토글 버튼 스타일 */
+.nav__toggle {
+  font-size: 1.55rem;
+  padding: .75rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+}
+
+/* 네비게이션 로고 스타일 */
+.nav__logo {
+  color: var(--white-color);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* 네비게이션 링크 스타일 */
+.nav__link {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  align-items: center;
+  column-gap: .75rem;
+  padding: .75rem;
+  color: var(--white-color);
+  border-radius: .5rem;
+  margin-bottom: 1rem;
+  transition: .3s;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 활성화된 링크 스타일 */
+.nav__link.active {
+  background-color: var(--first-color);
+}
+
+/* 네비게이션 이름 스타일 */
+.nav_name {
+  font-size: var(--small-font-size);
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+/* 네비게이션 링크에 호버 효과 */
+.nav__link:hover {
+  background-color: var(--first-color);
+}
+
+/* 아이콘 컨테이너 스타일 */
+.nav__icon-container {
+  width: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+/* 아이콘 스타일 */
+.nav__icon {
+  font-size: 1.25rem;
+}
+
+/* .expander 클래스에 대한 너비 스타일 */
+.expander {
+  width: calc(var(--nav--width) + 200px);
+}
+
+.body-expanded {
+  padding-left: calc(var(--nav--width) + 16rem); /* 필요에 따라 패딩을 조정하세요 */
+}
+
+/* 본문 패딩 스타일 */
+.body-pd {
+  padding: 2rem 0 0 16rem; /* 네비게이션 바가 확장될 때 본문에 패딩 추가 */
+}
+
+/* 축소된 링크 스타일 */
+.collapse__link {
+  justify-self: flex-end;
+  transition: 0.5s;
+}
+
+/* 축소된 메뉴 스타일 */
+.collapse__menu {
+  display: none;
+  padding: .75rem 2.25rem;
+}
+
+/* 축소된 서브링크 스타일 */
+.collapse__sublink {
+  color: var(--sub-color);
+  font-size: var(--small-font-size);
+}
+
+/* 축소된 서브링크에 호버 효과 */
+.collapse__sublink:hover {
+  color: var(--white-color);
+}
+
+/* showCollapse 클래스 스타일 */
+.showCollapse {
+  display: block;
+}
+
+/* 회전 애니메이션을 위한 rotate 클래스 */
+.rotate {
+  transform: rotate(180deg);
+  transition: .5s;
+}
+
+/* 새로운 아이콘 및 아이콘 크기 클래스에 대한 스타일 추가 */
+.nav__icon {
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+/* 아이콘 크기 클래스 */
+.nav__icon--fixed-size {
+  font-size: 1.25rem;
+}

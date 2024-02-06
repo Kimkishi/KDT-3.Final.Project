@@ -1,0 +1,33 @@
+/* App.css */
+
+.App {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+  padding-top: 50px; /* 상단바 높이만큼 여백 */
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 1;
+}
+
+.main-container-expanded {
+  margin-left: 100px;
+  transition: margin-left 0.3s ease;
+}
+
+.App-nav.open ~ main {
+  transform: translateX(200px); /* 사이드바 너비만큼 오른쪽으로 이동 */
+}
+
+.component-margin {
+  margin-bottom: 20px; /* 각 컴포넌트 아래에 20픽셀의 마진을 추가 */
+}
+
+/* App.css */
+
